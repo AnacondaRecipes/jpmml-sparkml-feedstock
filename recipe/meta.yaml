@@ -1,5 +1,5 @@
 {% set version = "1.6.5" %}
-{% set sha256 = "" %}
+{% set sha256 = "6cdfdde74b77271558aea16ff6489abb9544a193a3cc3bf60d3d5021df05a92c" %}
 
 package:
   name: jpmml-sparkml
@@ -7,18 +7,23 @@ package:
 
 source:
   url: https://repo1.maven.org/maven2/org/jpmml/jpmml-sparkml/{{ version }}/jpmml-sparkml-{{ version }}.jar
-  #sha256: {{ sha256 }}
+  sha256: {{ sha256 }}
 
 build:
   noarch: generic
   number: 0
+  script: | 
+    mkdir -p $PREFIX/share/jpmml-sparkml
+    cp jpmml-sparkml-{{ version }}.jar $PREFIX/share/jpmml-sparkml/
 
 requirements:
-  host:
-    - openjdk
   run:
     - openjdk
 
+test:
+  commands:
+    - dir %PREFIX%\share\jpmml-sparkml\jpmml-sparkml-{{ version }}.jar  # [win]
+    - test -f $PREFIX/share/jpmml-sparkml/jpmml-sparkml-{{ version }}.jar  # [not win]
 
 about:
   home: https://github.com/jpmml/jpmml-sparkml
