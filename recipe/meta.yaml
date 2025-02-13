@@ -1,48 +1,35 @@
-{% set name = "pyspark2pmml" %}
-{% set version = "0.5.1" %}
+{% set version = "1.6.5" %}
+{% set sha256 = "" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: jpmml-sparkml
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 426b2d4752d8c201cde533723972c8749aa2a40371f725d85d1524a2bb73ed03
+  url: https://repo1.maven.org/maven2/org/jpmml/jpmml-sparkml/{{ version }}/jpmml-sparkml-{{ version }}.jar
+  #sha256: {{ sha256 }}
 
 build:
-  noarch: python
-  number: 1
-  script: "{{ PYTHON }} -m pip install --no-deps --no-build-isolation . -vv"
-  skip: True # [not linux64]
+  noarch: generic
+  number: 0
 
 requirements:
   host:
-    - pip
-    - py4j
-    - python
-    - pyspark
-    - wheel
+    - openjdk
   run:
-    - py4j
-    - python
-    - pyspark
+    - openjdk
 
-test:
-  requires:
-    - pip
-  imports:
-    - pyspark.ml
-  commands:
-    - pip check
+
 about:
-  home: "https://github.com/jpmml/pyspark2pmml"
+  home: https://github.com/jpmml/jpmml-sparkml
+  summary: "PMML support for Apache Spark ML pipelines"
   license: "AGPL-3.0"
   license_family: AGPL
   license_file: LICENSE.txt
-  summary: "Python library for converting Apache Spark ML pipelines to PMML"
-  description: "Python package for converting Apache Spark ML pipelines to PMML."
-  doc_url: https://github.com/jpmml/pyspark2pmml
-  dev_url: https://github.com/jpmml/pyspark2pmml
+  summary: "Java library for converting Apache Spark ML pipelines to PMML"
+  description: "Java app for converting Apache Spark ML pipelines to PMML."
+  doc_url: https://github.com/jpmml/jpmml-sparkml
+  dev_url: https://github.com/jpmml/jpmml-sparkml
 
 extra:
   skip-lints:
@@ -50,5 +37,4 @@ extra:
   anaconda-services:
     ref: https://anaconda.zendesk.com/agent/tickets/34209
   recipe-maintainers:
-    - ianaobi
     - bradley
