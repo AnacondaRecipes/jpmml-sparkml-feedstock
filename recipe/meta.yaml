@@ -12,6 +12,9 @@ source:
 build:
   noarch: generic
   number: 0
+
+  # noarch packages are built on linux
+  skip: True # [not linux64]
   script: | 
     mkdir -p $PREFIX/share/jpmml-sparkml
     cp jpmml-sparkml-{{ version }}.jar $PREFIX/share/jpmml-sparkml/
