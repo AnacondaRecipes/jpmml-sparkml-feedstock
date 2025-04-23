@@ -17,8 +17,10 @@ build:
 
 requirements:
   host:
+    - maven 3.*
     - openjdk 11.*
   build:
+    - maven 3.*
     - openjdk 11.*
   run:
     - openjdk 11.*
