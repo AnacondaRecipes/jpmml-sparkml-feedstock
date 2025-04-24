@@ -17,11 +17,9 @@ build:
 
 requirements:
   host:
-    - lightgbm
     - maven 3.*
     - openjdk 11.*
   build:
-    - lightgbm
     - maven 3.*
     - openjdk 11.*
   run:

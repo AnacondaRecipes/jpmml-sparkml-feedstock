@@ -10,7 +10,7 @@ Summary: Java library and command-line application for converting Apache Spark M
 
 Development: [https://github.com/jpmml/jpmml-sparkml](https://github.com/jpmml/jpmml-sparkml)
 
-Documentation:
+Documentation: [https://github.com/jpmml/jpmml-sparkml/blob/master/README.md](https://github.com/jpmml/jpmml-sparkml/blob/master/README.md)
 
 # Current build status
 
@@ -27,3 +27,6 @@ Documentation:
 # Updating jpmml-sparkml-feedstock
 
 # Feedstock Maintainers
+
+* [@bkreider](https://github.com/bkreider)
+* [@amaloney](https://github.com/amaloney)
