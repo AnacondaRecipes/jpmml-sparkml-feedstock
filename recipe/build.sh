@@ -3,10 +3,12 @@
 # Download and install LightGBM, this is required for building the package using glibc 2.17.
 # See https://lightgbm.readthedocs.io/en/stable/Installation-Guide.html#build-java-wrapper
 cd $HOME
-git clone --recursive https://github.com/microsoft/LightGBM
+curl -L -o LightGBM-complete_source_code_tar_gz.tar.gz \
+    https://github.com/microsoft/LightGBM/releases/download/v4.6.0/LightGBM-complete_source_code_tar_gz.tar.gz
+mkdir LightGBM
+tar -xzvf LightGBM-complete_source_code_tar_gz.tar.gz -C LightGBM
+rm LightGBM-complete_source_code_tar_gz.tar.gz
 cd LightGBM
-git fetch --tags
-git checkout tags/stable -b stable
 cmake -B build -S . -DUSE_SWIG=ON
 cmake --build build -j $(nproc)
 cp lib_lightgbm.so /lib64
