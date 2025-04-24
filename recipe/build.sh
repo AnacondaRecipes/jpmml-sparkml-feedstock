@@ -3,6 +3,8 @@
 # Download and install LightGBM, this is required for building the package using glibc 2.17.
 # See https://lightgbm.readthedocs.io/en/stable/Installation-Guide.html#build-java-wrapper
 cd $HOME
+export CMAKE_C_COMPILER=$CC
+export CMAKE_CXX_COMPILER=$CXX
 curl -L -o LightGBM-complete_source_code_tar_gz.tar.gz \
     https://github.com/microsoft/LightGBM/releases/download/v4.6.0/LightGBM-complete_source_code_tar_gz.tar.gz
 mkdir LightGBM

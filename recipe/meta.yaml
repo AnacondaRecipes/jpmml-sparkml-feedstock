@@ -17,11 +17,15 @@ build:
 
 requirements:
   host:
-    - maven 3.*
-    - openjdk 11.*
   build:
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - cmake
+    - make
     - maven 3.*
+    - ninja
     - openjdk 11.*
+    - swig
   run:
     - openjdk 11.*
 
