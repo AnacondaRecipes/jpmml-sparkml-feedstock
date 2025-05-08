@@ -6,7 +6,7 @@ cd $HOME
 export CMAKE_C_COMPILER=$CC
 export CMAKE_CXX_COMPILER=$CXX
 curl -L -o LightGBM-complete_source_code_tar_gz.tar.gz \
-    https://github.com/microsoft/LightGBM/releases/download/v4.6.0/LightGBM-complete_source_code_tar_gz.tar.gz
+    https://github.com/microsoft/LightGBM/releases/download/v3.3.5/LightGBM-complete_source_code_tar_gz.tar.gz
 mkdir LightGBM
 tar -xzvf LightGBM-complete_source_code_tar_gz.tar.gz -C LightGBM
 rm LightGBM-complete_source_code_tar_gz.tar.gz
@@ -21,9 +21,9 @@ cd $SRC_DIR
 mvn package
 
 # Move the built JARs to the $PREFIX directory.
+export VERSION=2.5.3
 mkdir -p $PREFIX/share/java
-cp $SRC_DIR/pmml-sparkml/target/pmml-sparkml-3.1.0.jar $PREFIX/share/java
-cp $SRC_DIR/pmml-sparkml-evaluator/target/pmml-sparkml-evaluator-3.1.0.jar $PREFIX/share/java
-cp $SRC_DIR/pmml-sparkml-example/target/pmml-sparkml-example-3.1.0.jar $PREFIX/share/java
-cp $SRC_DIR/pmml-sparkml-lightgbm/target/pmml-sparkml-lightgbm-3.1.0.jar $PREFIX/share/java
-cp $SRC_DIR/pmml-sparkml-xgboost/target/pmml-sparkml-xgboost-3.1.0.jar $PREFIX/share/java
+cp $SRC_DIR/pmml-sparkml/target/pmml-sparkml-$VERSION.jar $PREFIX/share/java
+cp $SRC_DIR/pmml-sparkml-example/target/pmml-sparkml-example-$VERSION.jar $PREFIX/share/java
+cp $SRC_DIR/pmml-sparkml-lightgbm/target/pmml-sparkml-lightgbm-$VERSION.jar $PREFIX/share/java
+cp $SRC_DIR/pmml-sparkml-xgboost/target/pmml-sparkml-xgboost-$VERSION.jar $PREFIX/share/java

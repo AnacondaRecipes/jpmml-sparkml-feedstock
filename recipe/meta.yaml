@@ -1,6 +1,6 @@
 {% set name = "jpmml-sparkml" %}
-{% set version = "3.1.0" %}
-{% set sha256 = "93294b0354ca95f1536ce5d17c22d7176c6088e8ce9e152fd6085d432544699f" %}
+{% set version = "2.5.3" %}
+{% set sha256 = "eefeecb9ac57e6f2290575e28eb443913c423028816abafc0ad58c11376b265a" %}
 
 package:
   name: {{ name }}
@@ -24,15 +24,14 @@ requirements:
     - make
     - maven 3.*
     - ninja
-    - openjdk 11.*
+    - openjdk 8.*
     - swig
   run:
-    - openjdk 11.*
+    - openjdk 8.*
 
 test:
   commands:
     - test -f $PREFIX/share/java/pmml-sparkml-{{ version }}.jar
-    - test -f $PREFIX/share/java/pmml-sparkml-evaluator-{{ version }}.jar
     - test -f $PREFIX/share/java/pmml-sparkml-example-{{ version }}.jar
     - test -f $PREFIX/share/java/pmml-sparkml-lightgbm-{{ version }}.jar
     - test -f $PREFIX/share/java/pmml-sparkml-xgboost-{{ version }}.jar
