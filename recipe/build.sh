@@ -21,7 +21,7 @@ cd $SRC_DIR
 mvn package
 
 # Move the built JARs to the $PREFIX directory.
-export VERSION=2.5.3
+export VERSION=2.3.2
 mkdir -p $PREFIX/share/java
 cp $SRC_DIR/pmml-sparkml/target/pmml-sparkml-$VERSION.jar $PREFIX/share/java
 cp $SRC_DIR/pmml-sparkml-example/target/pmml-sparkml-example-$VERSION.jar $PREFIX/share/java

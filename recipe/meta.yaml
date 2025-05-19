@@ -1,6 +1,6 @@
 {% set name = "jpmml-sparkml" %}
-{% set version = "2.5.3" %}
-{% set sha256 = "eefeecb9ac57e6f2290575e28eb443913c423028816abafc0ad58c11376b265a" %}
+{% set version = "2.3.2" %}
+{% set sha256 = "4859bd5a2aaf3bcf0ee35182b94a7cfd6ef253795d6bf38bcaed38e41f61a69a" %}
 
 package:
   name: {{ name }}
@@ -54,5 +54,6 @@ extra:
   anaconda-services:
     ref: https://anaconda.zendesk.com/agent/tickets/66320
   recipe-maintainers:
+    - ianaobi
     - bkreider
     - amaloney
