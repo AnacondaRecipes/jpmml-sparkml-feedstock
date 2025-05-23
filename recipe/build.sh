@@ -16,14 +16,23 @@ cmake --build build -j $(nproc)
 cp lib_lightgbm.so /lib64
 cp lib_lightgbm_swig.so /lib64
 
-# Make the JARs.
-cd $SRC_DIR
+# Make the pmml-sparkml JARs.
+cd $HOME
+export VERSION=2.3.2
+curl -L -o $VERSION.tar.gz \
+    https://github.com/jpmml/jpmml-sparkml/archive/refs/tags/$VERSION.tar.gz
+tar -xzvf $VERSION.tar.gz
+rm $VERSION.tar.gz
+cd jpmml-sparkml-$VERSION
 mvn package
 
-# Move the built JARs to the $PREFIX directory.
-export VERSION=2.3.2
+# Move the built JARs to the $PREFIX/share/java directory.
 mkdir -p $PREFIX/share/java
-cp $SRC_DIR/pmml-sparkml/target/pmml-sparkml-$VERSION.jar $PREFIX/share/java
-cp $SRC_DIR/pmml-sparkml-example/target/pmml-sparkml-example-$VERSION.jar $PREFIX/share/java
-cp $SRC_DIR/pmml-sparkml-lightgbm/target/pmml-sparkml-lightgbm-$VERSION.jar $PREFIX/share/java
-cp $SRC_DIR/pmml-sparkml-xgboost/target/pmml-sparkml-xgboost-$VERSION.jar $PREFIX/share/java
+cp pmml-sparkml/target/pmml-sparkml-$VERSION.jar $PREFIX/share/java
+cp pmml-sparkml-example/target/pmml-sparkml-example-$VERSION.jar $PREFIX/share/java
+cp pmml-sparkml-lightgbm/target/pmml-sparkml-lightgbm-$VERSION.jar $PREFIX/share/java
+cp pmml-sparkml-xgboost/target/pmml-sparkml-xgboost-$VERSION.jar $PREFIX/share/java
+
+# Finally install the pyspark2pmml package.
+cd $SRC_DIR
+$PYTHON -m pip install --no-deps --no-build-isolation . -vv
