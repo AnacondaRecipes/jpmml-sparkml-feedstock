@@ -40,8 +40,10 @@ requirements:
     - ninja
     - openjdk 8.*
     - swig
+    - patch # [linux64]
   run:
     - py4j
+    - python
 
 test:
   requires:
