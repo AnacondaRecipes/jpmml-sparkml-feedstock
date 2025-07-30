@@ -1,19 +1,29 @@
 {% set name = "pyspark2pmml" %}
 {% set version = "0.5.1" %}
-{% set jpmml_version = "2.3.2" %}
 {% set sha256 = "426b2d4752d8c201cde533723972c8749aa2a40371f725d85d1524a2bb73ed03" %}
+{% set jpmml_name = "jpmml-sparkml" %}
+{% set jpmml_version = "2.3.5" %}
+{% set jpmml_sha256 = "c69cce99fb09d2e5a729e9d25964b5cf41826f38c06e2fbc859bdfefd2bae42d" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: {{ sha256 }}
+  - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+    sha256: {{ sha256 }}
+  - url: https://github.com/jpmml/{{ jpmml_name }}/archive/refs/tags/{{ jpmml_version }}.tar.gz
+    folder: jars
+    sha256: {{ jpmml_sha256 }}
+    patches:
+      - patches/0001-maven-plugin-addition.patch
+  - url: https://github.com/microsoft/LightGBM/releases/download/v3.3.5/LightGBM-complete_source_code_tar_gz.tar.gz
+    folder: lightgbm
+    sha256: 2a08ad905533a9fcc9c9551e06e7c12532d86cd22d9fe1aa0f6fc126ab53be77
 
 build:
   noarch: python
-  number: 2
+  number: 3
   skip: True # [not linux64]
 
 requirements:
